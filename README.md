@@ -4,6 +4,7 @@ Prerequisites
 
 Build instructions: 
 - ensure JAVA_HOME is set to JDK 1.8
+- compile : gradle build
 - testing: gradle test
 - build: gradle fatJar
 
