@@ -1,0 +1,32 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile('junit:junit:4.4')
+	testCompile('org.mockito:mockito-all:1.10.19')
+	testCompile('org.easytesting:fest-assert:1.4')
+}
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'rpg game',
+        	'Implementation-Version': version,
+        	'Main-Class': 'com.company.rpg.Application'
+    }
+    baseName = project.name + '-with-all-dependencies'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
