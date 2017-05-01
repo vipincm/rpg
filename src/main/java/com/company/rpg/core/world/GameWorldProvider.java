@@ -67,7 +67,7 @@ public class GameWorldProvider {
 	 */
 	private String getTopicName(List<String> list, String topicNumber){
 		 Integer topicSequence =Integer.parseInt(topicNumber);
-		 if(topicSequence>list.size()){
+		 if(topicSequence>list.size()||topicSequence.equals(0)){
 			 io.print("Invalid topic choosen. Try again! ");
 			 System.exit(0);
 		 }
